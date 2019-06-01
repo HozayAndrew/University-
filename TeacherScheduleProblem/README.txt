@@ -1,1 +1,1 @@
-asdfasfd
+The teacher of music has n students. Classes with all of them are held every day individually. Taking into account the abilities, the lesson of the i-th student takes t_i minutes (i = 1, ..., n). If after the i-th student is in charge with the j-th student, then the teacher needs τ_ij minutes in order to come to the senses and prepare for the next lesson. Make a schedule so that the teacher went home from work earlier
