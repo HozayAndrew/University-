@@ -18,4 +18,6 @@
 
   <Import Project="..\Model\Model.projitems" Label="Shared" />
 
+  <Import Project="..\Model\Model.projitems" Label="Shared" />
+
 </Project>

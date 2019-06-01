@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="TeacherProblemApp.Controls.Result"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeacherProblemApp.Controls"
+             mc:Ignorable="d" Width="400" Height="150" x:Name="_this">
+    <StackPanel>
+        <TextBlock Height="30" VerticalAlignment="Top" Text="{Binding ElementName=_this, Path=AlgorithmName}" TextAlignment="Center" FontSize="22"/>
+        <StackPanel Height="30" Orientation="Horizontal"  Margin="20, 10,0,0">
+            <TextBlock Text="Students sequence: " TextAlignment="Center" FontSize="16"/>
+            <TextBlock Text="{Binding ElementName=_this, Path=Sequence}" TextAlignment="Center" FontSize="16" Margin="10,0,0,0"></TextBlock>
+        </StackPanel>
+        <StackPanel Height="30" Orientation="Horizontal"  Margin="20, 10,0,0">
+            <TextBlock Text="Sum time: " TextAlignment="Center" FontSize="16"/>
+            <TextBlock Text="{Binding ElementName=_this, Path=SumTime}" TextAlignment="Center" FontSize="16" Margin="30,0,0,0"></TextBlock>
+        </StackPanel>
+        <StackPanel Height="23" Orientation="Horizontal"  Margin="20, 10,0,0">
+            <TextBlock Text="Execution time of algorithm: " TextAlignment="Center" FontSize="16"/>
+            <TextBlock Text="{Binding ElementName=_this, Path=AlgorithmTime}" TextAlignment="Center" FontSize="16" Margin="30,0,0,0"></TextBlock>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

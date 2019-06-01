@@ -1,0 +1,34 @@
+﻿<Page x:Class="TeacherProblemApp.Pages.SpecialCase"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TeacherProblemApp.Pages"
+      xmlns:controls="clr-namespace:TeacherProblemApp.Controls"
+      mc:Ignorable="d" 
+      Height="600" Width="1000"
+      Title="SpecialCase">
+
+    <Grid>
+        <Grid Width="1000" VerticalAlignment="Top" Height="600">
+            <controls:DynamicTable x:Name="Table" Height="500" VerticalAlignment="Top"/>
+            <StackPanel Width="500" Height="70" Margin="30,0,0,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <TextBlock Width="190" FontSize="20" Height="30" Text="Number of students:"/>
+                <TextBox Name="Students" Width="60" Height="30" TextChanged="Students_TextChanged" FontSize="20" TextAlignment="Center"/>
+                <Button Name="TableCreate"
+                        Width="220" 
+                        Margin="20,0,0,0" 
+                        Content="Create table" FontSize="28"
+                        Click="TableCreate_Click"/>
+            </StackPanel>
+            <Button Name="Results" 
+                    Opacity="0.5"
+                    IsEnabled="False"
+                    Width="250" Height="70" 
+                    Margin="0,0,30,10" 
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                    Content="Get results" FontSize="28"
+                    Click="Results_Click"/>
+        </Grid>
+    </Grid>
+</Page>

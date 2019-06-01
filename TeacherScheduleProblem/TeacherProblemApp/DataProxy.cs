@@ -11,18 +11,16 @@ namespace TeacherProblemApp
 {
     public class DataProxy
     {
-        public async Task<Result> GetData(Data data)
+        public async Task<Result> GetData(string apiUrl, Data data)
         {
             Result result = null;
 
             using (var httpClient = new HttpClient())
             {
-                var urlShow = "https://localhost:44318/api/algorithms";
-
                 var json = JsonConvert.SerializeObject(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await httpClient.PostAsync(urlShow, content);
+                var response = await httpClient.PostAsync(apiUrl, content);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
