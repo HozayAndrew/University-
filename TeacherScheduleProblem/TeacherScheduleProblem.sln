@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeacherProblem", "TeacherProblem\TeacherProblem.csproj", "{9824BAFE-B270-4A0E-A228-75C9AD0DC4CF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Model", "Model\Model.shproj", "{08FA0415-CAB7-4CB7-8528-724AD493C2AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeacherProblemApp", "TeacherProblemApp\TeacherProblemApp.csproj", "{015C453F-44AA-4C6C-AD19-0F826EA866B9}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Model\Model.projitems*{015c453f-44aa-4c6c-ad19-0f826ea866b9}*SharedItemsImports = 4
+		Model\Model.projitems*{08fa0415-cab7-4cb7-8528-724ad493c2aa}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9824BAFE-B270-4A0E-A228-75C9AD0DC4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9824BAFE-B270-4A0E-A228-75C9AD0DC4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9824BAFE-B270-4A0E-A228-75C9AD0DC4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9824BAFE-B270-4A0E-A228-75C9AD0DC4CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015C453F-44AA-4C6C-AD19-0F826EA866B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015C453F-44AA-4C6C-AD19-0F826EA866B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015C453F-44AA-4C6C-AD19-0F826EA866B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015C453F-44AA-4C6C-AD19-0F826EA866B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {90D4316E-2488-45A2-B57A-443895D6AA49}
+	EndGlobalSection
+EndGlobal
