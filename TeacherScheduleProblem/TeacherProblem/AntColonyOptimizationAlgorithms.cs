@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using TeacherProblem.Helpers;
-using TeacherProblem.Model;
 
 namespace TeacherProblem
 {
-    public class AntColonyOptimizationAlgorithms
+    public class AntColonyOptimizationAlgorithms : IAlgorithm
     {
         private const float Alpha = 1f;
         private const float Beta = 1f;
@@ -24,17 +25,19 @@ namespace TeacherProblem
 
         private struct TempResult
         {
-            public TempResult(List<int> path, float sum)
+            public TempResult(List<int> path, int sum)
             {
                 Path = path;
                 Sum = sum;
             }
             public List<int> Path { get; private set; }
-            public float Sum { get; private set; }
+            public int Sum { get; private set; }
         }
 
         public Result RunAlgorithm(Data data)
         {
+            var currentDate = DateTime.Now;
+
             TetaMatrix = new List<List<float>>();
             for (int i = 0; i < data.Count; i++)
             {
@@ -47,12 +50,21 @@ namespace TeacherProblem
 
             MinPathWeight = GetMinPathWeight(data.Matrix.CopyMatrix());
 
+            Record = new TempResult(new List<int>(), 10000000);
+
             for (int i = 0; i < 10; i++)
             {
                 OneStep(data);
             }
 
-            var result = new Result();
+            var newDate = DateTime.Now;
+            var result = new Result
+            {
+
+                AlgorithmTime = (newDate - currentDate).TotalMilliseconds,
+                StudentSequence = Record.Path,
+                SumTime = Record.Sum + data.Time.Sum()
+            };
 
             return result;
         }
@@ -63,9 +75,13 @@ namespace TeacherProblem
             for (int i = 0; i < data.Count; i++)
             {
                 var result = GetResult(i, data.Matrix.CopyMatrix());
-                SetNewWeights(result);
 
-                if(Record.Sum < result.Sum)
+                if (result.Sum != 0)
+                {
+                    SetNewWeights(result);
+                }
+
+                if (Record.Sum > result.Sum)
                 {
                     Record = result;
                 }
@@ -74,7 +90,7 @@ namespace TeacherProblem
 
         private void SetNewWeights(TempResult result)
         {
-            for(int i = 0; i < result.Path.Count; i++)
+            for (int i = 0; i < result.Path.Count; i++)
             {
                 for (int j = 0; j < result.Path.Count; j++)
                 {
@@ -84,7 +100,7 @@ namespace TeacherProblem
 
             var deltaTeta = MinPathWeight / result.Sum;
 
-            for(int i = 1; i < result.Path.Count; i++)
+            for (int i = 1; i < result.Path.Count; i++)
             {
                 TetaMatrix[result.Path[i - 1]][result.Path[i]] += deltaTeta;
             }
@@ -95,7 +111,7 @@ namespace TeacherProblem
             var path = new List<int>();
             path.Add(startEdge);
 
-            var sumWeights = 0f;
+            var sumWeights = 0;
 
             var currentEdge = startEdge;
 
@@ -122,9 +138,9 @@ namespace TeacherProblem
         {
             var probabilty = new List<float>();
 
-            for(int i = 0; i < wights.Count; i++)
+            for (int i = 0; i < wights.Count; i++)
             {
-                if(wights[edge][i] < 100000)
+                if (wights[edge][i] < 100000)
                 {
                     var value = (float)(Math.Pow(TetaMatrix[edge][i], Alpha) * Math.Pow(1f / wights[edge][i], Beta));
                     probabilty.Add(value);
@@ -148,9 +164,9 @@ namespace TeacherProblem
 
             var randomValue = _random.NextDouble();
             int index = -1;
-            for(int i = 0; i < intervals.Count; i++)
+            for (int i = 0; i < intervals.Count; i++)
             {
-                if(randomValue < intervals[i])
+                if (randomValue < intervals[i])
                 {
                     index = i;
                     break;
@@ -172,10 +188,10 @@ namespace TeacherProblem
         private int GetMinPathWeight(List<List<int>> matrix)
         {
             var sum = 0;
-            for(int i = 0; i < matrix.Count; i++)
+            for (int i = 0; i < matrix.Count; i++)
             {
                 var value = matrix[i].Min();
-                for(int j = 0; j < matrix.Count; j++)
+                for (int j = 0; j < matrix.Count; j++)
                 {
                     matrix[i][j] -= value;
                 }
@@ -187,7 +203,7 @@ namespace TeacherProblem
             {
                 var newTempList = new List<int>();
 
-                for(int j = 0; j < matrix.Count; j++)
+                for (int j = 0; j < matrix.Count; j++)
                 {
                     newTempList.Add(matrix[j][i]);
                 }

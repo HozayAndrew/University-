@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 using Newtonsoft.Json;
-using TeacherProblem.Model;
 
 namespace TeacherProblem.Controllers
 {
@@ -22,8 +22,28 @@ namespace TeacherProblem.Controllers
 
         // POST api/algorithms
         [EnableCors("AllowMyOrigin")]
-        [HttpPost]
-        public IActionResult Post([FromBody] Data data)
+        [HttpPost("greedy")]
+        public IActionResult GreedyPost([FromBody] Data data)
+        {
+            if (data.Count <= 0) return BadRequest("Count <= 0");
+            else if (data.Time.Count != data.Count) return BadRequest("Time.Count != Count");
+            else if (data.Matrix.Count != data.Count) return BadRequest("Matrix.Count != Count");
+
+            for (int i = 0; i < data.Matrix.Count; i++)
+            {
+                var list = data.Matrix[i];
+                if (list.Count != data.Count) return BadRequest($"Matrix[{i}].Count != Count");
+            }
+
+            var algorithm = new GreedyAlgorithm();
+            var result = algorithm.RunAlgorithm(data);
+
+            return new JsonResult(result);
+        }
+
+        [EnableCors("AllowMyOrigin")]
+        [HttpPost("antColony")]
+        public IActionResult AntColonyPost([FromBody] Data data)
         {
             if (data.Count <= 0) return BadRequest("Count <= 0");
             else if (data.Time.Count != data.Count) return BadRequest("Time.Count != Count");
@@ -36,9 +56,18 @@ namespace TeacherProblem.Controllers
             }
 
             var algorithm = new AntColonyOptimizationAlgorithms();
-            var results = algorithm.RunAlgorithm(data);
 
-            return new JsonResult(results);
+            Result result = null;
+            try
+            {
+                result = algorithm.RunAlgorithm(data);
+            }
+            catch(Exception ex)
+            {
+                //lnjk
+            }
+
+            return new JsonResult(result);
         }
     }
 }

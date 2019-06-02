@@ -35,7 +35,7 @@ namespace TeacherProblemApp.Pages
 
         private void Experiments_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(new ExperimentsPage());
         }
 
         private void About_Click(object sender, RoutedEventArgs e)

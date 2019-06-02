@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TeacherProblem.Model
+namespace Model
 {
     public class Result
     {
-        [JsonProperty(PropertyName = "StudentSequence")]
+        [JsonProperty(PropertyName = "studen_sequence")]
         public List<int> StudentSequence { get; set; }
 
-        [JsonProperty(PropertyName = "SumTime")]
+        [JsonProperty(PropertyName = "sum_time")]
         public int SumTime { get; set; }
 
-        [JsonProperty(PropertyName = "AlgorithmTime")]
-        public int AlgorithmTime { get; set; }
+        [JsonProperty(PropertyName = "algorithm_time")]
+        public double AlgorithmTime { get; set; }
     }
 }

@@ -2,23 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TeacherProblem.Model;
 using TeacherProblem.Helpers;
+using Model;
 
 namespace TeacherProblem
 {
-    public class GreedyAlgorithm
+    public class GreedyAlgorithm : IAlgorithm
     {
-        public List<Result> RunAlgorithm(Data data)
+        public Result RunAlgorithm(Data data)
         {
-            var results = new List<Result>();
+            var currentDate = DateTime.Now;
+            Result result = null;
 
             for (int i = 0; i < data.Count; i++)
             {
-                results.Add(FindPass(data, i));
+                var tempResult = FindPass(data, i);
+                if(result == null || result.SumTime > tempResult.SumTime)
+                {
+                    result = tempResult;
+                }
             }
 
-            return results;
+            var newDate = DateTime.Now;
+            result.AlgorithmTime = (newDate - currentDate).TotalMilliseconds;
+
+            return result;
         }
 
         private Result FindPass(Data data, int startEdge)

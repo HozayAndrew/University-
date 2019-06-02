@@ -4,11 +4,26 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TeacherProblemApp.Pages"
+      xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d" 
       Height="600" Width="1000"
-      Title="ExperimentsPage">
+      Title="ExperimentsPage"
+      x:Name="_this">
 
     <Grid>
-        
+        <StackPanel>
+            <oxy:PlotView Height="500" x:Name="Plot"/>  
+            <StackPanel Orientation="Horizontal" Height="60" Margin="0, 20, 0, 0">
+                <TextBlock Width="160" Height="40" Text="Enter interval: " TextAlignment="Center" FontSize="26"/>
+                <TextBox Name="StartValue" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="5" TextAlignment="Center"/>
+                <TextBlock Width="10" Height="40" Text=":" TextAlignment="Center" FontSize="26" Margin="10,0,0,0"/>
+                <TextBox Name="FinishValue" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="20" TextAlignment="Center"/>
+
+                <TextBlock Width="160" Height="40" Text="Enter step: " TextAlignment="Center" FontSize="26" Margin="80,0,0,0"/>
+                <TextBox Name="Step" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="1" TextAlignment="Center"/>
+
+                <Button Margin="200,0,0,0" Width="120" FontSize="26" Content="Get data" Click="Button_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

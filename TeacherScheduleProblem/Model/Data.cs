@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TeacherProblem.Model
+namespace Model
 {
     public class Data
     {
-        [JsonProperty(PropertyName = "Count")]
+        [JsonProperty(PropertyName = "count")]
         public int Count { get; set; }
 
-        [JsonProperty(PropertyName = "Time")]
+        [JsonProperty(PropertyName = "time")]
         public List<int> Time { get; set; }
 
-        [JsonProperty(PropertyName = "Matrix")]
+        [JsonProperty(PropertyName = "matrix")]
         public List<List<int>> Matrix { get; set; }
     }
 }
