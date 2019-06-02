@@ -66,7 +66,7 @@ namespace TeacherProblemApp.Pages
 
                 try
                 {
-                    var _Algorithm = await dataProxy.GetData(Config._Algorithm, Data);
+                    var _Algorithm = await dataProxy.GetData(Config.BeesAlgorithm, Data);
 
                     Results.Children.Add(new Controls.Result()
                     {

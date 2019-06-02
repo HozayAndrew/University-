@@ -55,7 +55,7 @@ namespace TeacherProblemApp.Pages
 
             try
             {
-                var _Series = await GetSeries("_", Config._AlgorithmExperiments, Colors.Yellow);
+                var _Series = await GetSeries("_", Config.BeesAlgorithmExperiments, Colors.Yellow);
                 MyModel.Series.Add(_Series);
             }
             catch(Exception ex)

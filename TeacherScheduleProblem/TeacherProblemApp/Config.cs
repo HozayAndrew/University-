@@ -10,10 +10,10 @@ namespace TeacherProblemApp
     {
         public static string GreedyAlgorithm = "https://localhost:44318/api/algorithms/greedy";
         public static string AntColonyAlgorithm = "https://localhost:44318/api/algorithms/antColony";
-        public static string _Algorithm = "";
+        public static string BeesAlgorithm = "http://localhost:8080/api/algorithms/bees";
 
         public static string GreedyAlgorithmExperiments = "https://localhost:44318/api/experiments/greedy";
         public static string AntColonyAlgorithmExperiments = "https://localhost:44318/api/experiments/antColony";
-        public static string _AlgorithmExperiments = "";
+        public static string BeesAlgorithmExperiments = "http://localhost:8080/api/experiments/bees";
     }
 }
