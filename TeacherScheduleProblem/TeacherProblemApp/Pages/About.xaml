@@ -9,7 +9,8 @@
       Title="About">
     <StackPanel>
         <TextBlock Text="Teacher shedule problem wpf app" TextAlignment="Center" FontSize="50" Height="70" Margin="0, 50,0,0"/>
-        <TextBlock Text="Source code for wpf app and Web APIs with algorithm and documentation for them can be found at Git repository"></TextBlock>
-
+        <TextBlock Text="Source code for wpf app and Web APIs with algorithm and documentation for them can be found at Git repository"
+                   TextAlignment="Center" FontSize="30" TextWrapping="Wrap"/>
+        <TextBlock Text="https://github.com/HozayAndrew/University-.git" FontSize="26" Foreground="Blue" TextAlignment="Center"/>
     </StackPanel>
 </Page>
