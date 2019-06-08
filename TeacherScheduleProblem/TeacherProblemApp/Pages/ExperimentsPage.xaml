@@ -12,17 +12,23 @@
 
     <Grid>
         <StackPanel>
-            <oxy:PlotView Height="500" x:Name="Plot"/>  
+            <StackPanel Orientation="Horizontal" Height="500">
+                <oxy:PlotView x:Name="TimePlot" Width="500"/>
+                <oxy:PlotView x:Name="ValuePlot" Width="500"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Height="60" Margin="0, 20, 0, 0">
                 <TextBlock Width="160" Height="40" Text="Enter interval: " TextAlignment="Center" FontSize="26"/>
                 <TextBox Name="StartValue" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="5" TextAlignment="Center"/>
                 <TextBlock Width="10" Height="40" Text=":" TextAlignment="Center" FontSize="26" Margin="10,0,0,0"/>
                 <TextBox Name="FinishValue" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="20" TextAlignment="Center"/>
 
-                <TextBlock Width="160" Height="40" Text="Enter step: " TextAlignment="Center" FontSize="26" Margin="80,0,0,0"/>
-                <TextBox Name="Step" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="1" TextAlignment="Center"/>
+                <TextBlock Width="160" Height="40" Text="Enter step: " TextAlignment="Center" FontSize="26" Margin="10,0,0,0"/>
+                <TextBox Name="Step" Width="50" Height="40" FontSize="26" Text="1" TextAlignment="Center"/>
 
-                <Button Margin="200,0,0,0" Width="120" FontSize="26" Content="Get data" Click="Button_Click"/>
+                <TextBlock Width="200" Height="40" Text="Count for step: " TextAlignment="Center" FontSize="26" Margin="20,0,0,0"/>
+                <TextBox Name="StepCount" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="1" TextAlignment="Center"/>
+
+                <Button Margin="70,0,0,0" Width="120" FontSize="26" Content="Get data" Click="Button_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

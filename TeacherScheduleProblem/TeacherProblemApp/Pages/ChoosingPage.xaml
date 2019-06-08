@@ -12,6 +12,7 @@
         <StackPanel Orientation="Vertical" Width="400" Height="320">
             <Button Name="SpecialCase" Height="80" Content="Special Case" FontSize="40" Click="SpecialCase_Click"/>
             <Button Name="Experiments" Height="80" Content="Experiments" FontSize="40" Click="Experiments_Click"/>
+            <Button Name="Saved" Height="80" Content="Saved Data" FontSize="40" Click="Saved_Click"/>
             <Button Name="About" Height="80" Content="About" FontSize="40" Click="About_Click"/>
         </StackPanel>
     </Grid>

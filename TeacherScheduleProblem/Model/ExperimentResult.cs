@@ -12,5 +12,8 @@ namespace Model
 
         [JsonProperty(PropertyName = "time")]
         public double Time { get; set; }
+
+        [JsonProperty(PropertyName = "function_result")]
+        public int FunctionResult { get; set; }
     }
 }

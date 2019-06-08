@@ -15,5 +15,8 @@ namespace Model
 
         [JsonProperty(PropertyName = "step")]
         public int Step { get; set; }
+
+        [JsonProperty(PropertyName = "count")]
+        public int Count { get; set; }
     }
 }

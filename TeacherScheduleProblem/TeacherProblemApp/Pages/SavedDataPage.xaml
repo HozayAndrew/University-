@@ -1,0 +1,35 @@
+﻿<Page x:Class="TeacherProblemApp.Pages.SavedDataPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TeacherProblemApp.Pages"
+      xmlns:model="clr-namespace:Model"
+      mc:Ignorable="d" 
+      Height="600" Width="1000"
+      Title="SavedDataPage">
+
+    <Grid>
+        <ListView x:Name="ResultsPreviewList" Width="650" Padding="10,0,15,0" SelectionChanged="ResultsPreviewList_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Background="Yellow" Width="615" Height="100">
+                        <TextBlock Text="{Binding AlgorithmName}" FontSize="24" TextAlignment="Center"/>
+
+                        <StackPanel Orientation="Horizontal" Width="140">
+                            <TextBlock Text="Task size: " FontSize="24"/>
+                            <TextBlock Text="{Binding Size}" FontSize="24"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Width="300">
+                            <TextBlock Text="Time of execution: " FontSize="24"/>
+                            <TextBlock Text="{Binding AlgorithmTime}" FontSize="24"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </Grid>
+</Page>

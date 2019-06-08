@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace TeacherProblemApp.AppModel
 {
-    public class ResultFunction
+    public class TimeResultFunction
     {
-        public IList<DataPoint> Points { get; private set; }
+        public IList<DataPoint> Points { get; }
 
-        public ResultFunction(List<ExperimentResult> results)
+        public TimeResultFunction(List<ExperimentResult> results)
         {
             Points = new List<DataPoint>();
             foreach(var result in results)

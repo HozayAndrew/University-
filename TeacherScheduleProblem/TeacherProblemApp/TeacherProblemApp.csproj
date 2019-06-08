@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ChoosingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,11 +88,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppModel\ValueResultFunction.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Controls\Result.xaml.cs">
       <DependentUpon>Result.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppModel\ResultFunction.cs" />
+    <Compile Include="AppModel\TimeResultFunction.cs" />
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ChoosingPage.xaml.cs">
       <DependentUpon>ChoosingPage.xaml</DependentUpon>
     </Compile>
@@ -108,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SavedDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SpecialCase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +131,9 @@
     </Compile>
     <Compile Include="Pages\ResultPage.xaml.cs">
       <DependentUpon>ResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SavedDataPage.xaml.cs">
+      <DependentUpon>SavedDataPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SpecialCase.xaml.cs">
       <DependentUpon>SpecialCase.xaml</DependentUpon>

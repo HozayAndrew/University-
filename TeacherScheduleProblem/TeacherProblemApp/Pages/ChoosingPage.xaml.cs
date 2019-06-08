@@ -40,7 +40,13 @@ namespace TeacherProblemApp.Pages
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
+            Frame.Navigate(new About());
+        }
 
+        private void Saved_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new SavedDataPage { Frame = Frame };
+            Frame.Navigate(page);
         }
     }
 }
