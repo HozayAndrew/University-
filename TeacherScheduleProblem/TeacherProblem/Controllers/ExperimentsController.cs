@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using TeacherProblem.Helpers;
 
 namespace TeacherProblem.Controllers
 {
@@ -12,15 +13,29 @@ namespace TeacherProblem.Controllers
     [Route("api/[controller]")]
     public class ExperimentsController : Controller
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        [EnableCors("AllowMyOrigin")]
+        [HttpPost]
+        public IActionResult Get([FromBody] ExperimentsSettings settings)
         {
-            return new string[] { "value1", "value2" };
+            List<Data> data = new List<Data>();
+            var currentValue = settings.StartCount;
+
+            while (currentValue < settings.FinishCount)
+            {
+                for (int i = 0; i < settings.Count; i++)
+                {
+                    var tempData = DataHelper.GetData(currentValue);
+                    data.Add(tempData);
+                }
+                currentValue += settings.Step;
+            }
+
+            return new JsonResult(data);
         }
 
         [EnableCors("AllowMyOrigin")]
         [HttpPost("greedy")]
-        public IActionResult GreedyPost([FromBody] ExperimentsData data)
+        public IActionResult GreedyPost([FromBody] List<Data> data)
         {
             var exp = new Experiments();
             var result = exp.GetExperimentResults(new GreedyAlgorithm(), data);
@@ -29,7 +44,7 @@ namespace TeacherProblem.Controllers
 
         [EnableCors("AllowMyOrigin")]
         [HttpPost("antColony")]
-        public IActionResult AntColonyPost([FromBody] ExperimentsData data)
+        public IActionResult AntColonyPost([FromBody] List<Data> data)
         {
             var exp = new Experiments();
             var result = exp.GetExperimentResults(new AntColonyOptimizationAlgorithms(), data);

@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace TeacherProblemApp.AppModel
 {
-    public class TimeResultFunction
+    public class TimeResultFunction : ResultFunction
     {
-        public IList<DataPoint> Points { get; }
-
         public TimeResultFunction(List<ExperimentResult> results)
         {
             Points = new List<DataPoint>();

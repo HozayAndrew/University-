@@ -9,20 +9,21 @@ namespace TeacherProblem
 {
     public class Experiments
     {
-        internal List<ExperimentResult> GetExperimentResults(IAlgorithm algorithm, ExperimentsData data)
+        internal List<ExperimentResult> GetExperimentResults(IAlgorithm algorithm, List<Data> data)
         {
             var results = new List<ExperimentResult>();
-
-            var currentValue = data.StartCount;
-
-            while (currentValue < data.FinishCount)
+            foreach(var group in data.GroupBy(i => i.Count))
             {
-                var tempData = DataHelper.GetData(currentValue);
-                var result = algorithm.RunAlgorithm(tempData);
+                var averageTime = 0.0;
+                var averageSum = 0;
+                foreach (var item in group)
+                {
+                    var result = algorithm.RunAlgorithm(item);
+                    averageTime += result.AlgorithmTime;
+                    averageSum += result.SumTime;
+                }
 
-                results.Add(new ExperimentResult { Size = currentValue, Time = result.AlgorithmTime });
-
-                currentValue += data.Step;
+                results.Add(new ExperimentResult { Size = group.Key, Time = averageTime / group.Count(), FunctionResult = averageSum / group.Count()});
             }
 
             return results;

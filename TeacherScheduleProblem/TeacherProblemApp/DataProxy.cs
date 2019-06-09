@@ -30,7 +30,7 @@ namespace TeacherProblemApp
             return result;
         }
 
-        public async Task<List<ExperimentResult>> GetExperimentResult(string apiUrl, ExperimentsData data)
+        public async Task<List<ExperimentResult>> GetExperimentResult(string apiUrl, List<Data> data)
         {
             List<ExperimentResult> result = null;
 
@@ -44,6 +44,25 @@ namespace TeacherProblemApp
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 result = JsonConvert.DeserializeObject<List<ExperimentResult>>(responseBody);
+            }
+
+            return result;
+        }
+
+        public async Task<List<Data>> GetProblems(string apiUrl, ExperimentsSettings settings)
+        {
+            List<Data> result = null;
+
+            using (var httpClient = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(settings);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync(apiUrl, content);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                result = JsonConvert.DeserializeObject<List<Data>>(responseBody);
             }
 
             return result;

@@ -15,5 +15,7 @@ namespace TeacherProblemApp
         public static string GreedyAlgorithmExperiments = "https://localhost:44318/api/experiments/greedy";
         public static string AntColonyAlgorithmExperiments = "https://localhost:44318/api/experiments/antColony";
         public static string BeesAlgorithmExperiments = "http://localhost:8080/api/experiments/bees";
+
+        public static string GenerateRequest = "https://localhost:44318/api/experiments";
     }
 }

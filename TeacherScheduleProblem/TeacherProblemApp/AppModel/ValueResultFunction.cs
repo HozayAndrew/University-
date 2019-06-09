@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace TeacherProblemApp.AppModel
 {
-    public class ValueResultFunction
+    public class ValueResultFunction : ResultFunction
     {
-        public IList<DataPoint> Points { get; }
-
         public ValueResultFunction(List<ExperimentResult> results)
         {
             Points = new List<DataPoint>();

@@ -19,6 +19,8 @@ namespace TeacherProblem
         private Random _random = new Random();
         private int MinPathWeight;
 
+        private int Count;
+
         private List<List<float>> TetaMatrix;
 
         private TempResult Record;
@@ -34,9 +36,24 @@ namespace TeacherProblem
             public int Sum { get; private set; }
         }
 
+        private struct PartPath
+        {
+            public PartPath(int startIndex, int finishIndex, float fullPathLength)
+            {
+                StartIndex = startIndex;
+                FinishIndex = finishIndex;
+                FullPathLength = fullPathLength;
+            }
+            public int StartIndex { get; }
+            public int FinishIndex { get; }
+            public float FullPathLength { get; }
+        }
+
         public Result RunAlgorithm(Data data)
         {
             var currentDate = DateTime.Now;
+
+            Count = data.Count;
 
             TetaMatrix = new List<List<float>>();
             for (int i = 0; i < data.Count; i++)
@@ -52,64 +69,88 @@ namespace TeacherProblem
 
             Record = new TempResult(new List<int>(), 10000000);
 
-            for (int i = 0; i < 10; i++)
+            var numberOfIterationToExit = 5;
+            if (data.Count > 20) numberOfIterationToExit = 10;
+
+            var countBadResults = 0;
+            while (countBadResults < numberOfIterationToExit)
             {
-                OneStep(data);
+                var newValue = OneStep(data);
+                if (Record.Sum > newValue.Sum)
+                {
+                    Record = newValue;
+                    countBadResults = 0;
+                }
+                else
+                {
+                    countBadResults++;
+                }
             }
 
             var newDate = DateTime.Now;
-            var result = new Result
+
+            return new Result
             {
 
                 AlgorithmTime = (newDate - currentDate).TotalMilliseconds,
                 StudentSequence = Record.Path,
                 SumTime = Record.Sum + data.Time.Sum()
             };
-
-            return result;
         }
 
-        private void OneStep(Data data)
+        private TempResult OneStep(Data data)
         {
             // create ants
+            List<TempResult> results = new List<TempResult>();
+
             for (int i = 0; i < data.Count; i++)
             {
                 var result = GetResult(i, data.Matrix.CopyMatrix());
-
-                if (result.Sum != 0)
-                {
-                    SetNewWeights(result);
-                }
-
-                if (Record.Sum > result.Sum)
-                {
-                    Record = result;
-                }
+                results.Add(result);
             }
+
+            SetNewWeights(results);
+
+            return results.OrderBy(i => i.Sum).First();
         }
 
-        private void SetNewWeights(TempResult result)
+        private void SetNewWeights(List<TempResult> results)
         {
-            for (int i = 0; i < result.Path.Count; i++)
+            //save all tuples like i j path
+            var pathes = new List<PartPath>();
+            for (int i = 0; i < results.Count; i++)
             {
-                for (int j = 0; j < result.Path.Count; j++)
+                if (results[i].Path.Count == Count)
                 {
-                    TetaMatrix[i][j] *= (1 - P);
+                    var fullLength = (float)MinPathWeight / results[i].Sum;
+                    for (int j = 1; j < Count; j++)
+                    {
+                        pathes.Add(new PartPath(results[i].Path[j - 1], results[i].Path[j], fullLength));
+                    }
                 }
             }
 
-            var deltaTeta = MinPathWeight / result.Sum;
-
-            for (int i = 1; i < result.Path.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                TetaMatrix[result.Path[i - 1]][result.Path[i]] += deltaTeta;
+                for (int j = 0; j < Count; j++)
+                {
+                    TetaMatrix[i][j] *= (1 - P);
+                    var allExistPathes = pathes.Where(k => k.StartIndex == i && k.FinishIndex == j);
+                    if(allExistPathes.Any())
+                    {
+                        var delta = allExistPathes.Sum(s => s.FullPathLength);
+                        TetaMatrix[i][j] += delta;
+                    }
+                }
             }
         }
 
         private TempResult GetResult(int startEdge, List<List<int>> wights)
         {
-            var path = new List<int>();
-            path.Add(startEdge);
+            var path = new List<int>
+            {
+                startEdge
+            };
 
             var sumWeights = 0;
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    public class ExperimentsData
+    public class ExperimentsSettings
     {
         [JsonProperty(PropertyName = "start_count")]
         public int StartCount { get; set; }

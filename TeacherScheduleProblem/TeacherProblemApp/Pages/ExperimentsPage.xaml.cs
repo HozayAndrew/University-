@@ -39,19 +39,20 @@ namespace TeacherProblemApp.Pages
             ValueModel = new PlotModel { Title = "Algorithms Value" };
             TimeModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = int.Parse(StartValue.Text), Maximum = int.Parse(FinishValue.Text) });
 
-            var expData = new Model.ExperimentsData
+            var expData = new Model.ExperimentsSettings
             {
                 StartCount = int.Parse(StartValue.Text),
                 FinishCount = int.Parse(FinishValue.Text),
                 Step = int.Parse(Step.Text),
                 Count = int.Parse(StepCount.Text)
             };
+            var data = await GetProblems(expData);
 
             var task1 = Task.Run(async () =>
             {
                try
                {
-                   var greedyResults = await GetExperimentResults(Config.GreedyAlgorithmExperiments, expData);
+                   var greedyResults = await GetExperimentResults(Config.GreedyAlgorithmExperiments, data);
 
                    var greedyTimeSeries = GetTimeSeries("Greedy", new TimeResultFunction(greedyResults), Colors.Green);
                    var greedyValueSeries = GetValueSeries("Greedy", new ValueResultFunction(greedyResults), Colors.Green);
@@ -75,7 +76,7 @@ namespace TeacherProblemApp.Pages
             {
                 try
                 {
-                    var antColonyResults = await GetExperimentResults(Config.AntColonyAlgorithmExperiments, expData);
+                    var antColonyResults = await GetExperimentResults(Config.AntColonyAlgorithmExperiments, data);
 
                     var antColonyTimeSeries = GetTimeSeries("AntColony", new TimeResultFunction(antColonyResults), Colors.Red);
                     var antColonyValueSeries = GetValueSeries("AntColony", new ValueResultFunction(antColonyResults), Colors.Red);
@@ -99,7 +100,7 @@ namespace TeacherProblemApp.Pages
             {
                 try
                 {
-                    var beesResults = await GetExperimentResults(Config.BeesAlgorithmExperiments, expData);
+                    var beesResults = await GetExperimentResults(Config.BeesAlgorithmExperiments, data);
 
                     var beesTimeSeries = GetTimeSeries("Bees", new TimeResultFunction(beesResults), Colors.Yellow);
                     var beesValueSeries = GetValueSeries("Bees", new ValueResultFunction(beesResults), Colors.Yellow);
@@ -128,7 +129,13 @@ namespace TeacherProblemApp.Pages
             ValuePlot.Model = ValueModel;
         }
 
-        private async Task<List<Model.ExperimentResult>> GetExperimentResults(string apiUrl, Model.ExperimentsData expData)
+        private async Task<List<Model.Data>> GetProblems(Model.ExperimentsSettings settings)
+        {
+            var dataProxy = new DataProxy();
+            return await dataProxy.GetProblems(Config.GenerateRequest, settings);
+        }
+
+        private async Task<List<Model.ExperimentResult>> GetExperimentResults(string apiUrl, List<Model.Data> expData)
         {
             var dataProxy = new DataProxy();
             return await dataProxy.GetExperimentResult(apiUrl, expData);
