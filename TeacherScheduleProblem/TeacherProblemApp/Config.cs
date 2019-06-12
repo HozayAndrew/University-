@@ -8,14 +8,14 @@ namespace TeacherProblemApp
 {
     public class Config
     {
-        public static string GreedyAlgorithm = "https://localhost:44318/api/algorithms/greedy";
-        public static string AntColonyAlgorithm = "https://localhost:44318/api/algorithms/antColony";
-        public static string BeesAlgorithm = "http://localhost:8080/api/algorithms/bees";
+        public static string GreedyAlgorithm = "https://teacherproblem.azurewebsites.net/api/algorithms/greedy";
+        public static string AntColonyAlgorithm = "https://teacherproblem.azurewebsites.net/api/algorithms/antColony";
+        public static string BeesAlgorithm = "http://busovilya.pythonanywhere.com/api/algorithms/bees";
 
-        public static string GreedyAlgorithmExperiments = "https://localhost:44318/api/experiments/greedy";
-        public static string AntColonyAlgorithmExperiments = "https://localhost:44318/api/experiments/antColony";
-        public static string BeesAlgorithmExperiments = "http://localhost:8080/api/experiments/bees";
+        public static string GreedyAlgorithmExperiments = "https://teacherproblem.azurewebsites.net/api/experiments/greedy";
+        public static string AntColonyAlgorithmExperiments = "https://teacherproblem.azurewebsites.net/api/experiments/antColony";
+        public static string BeesAlgorithmExperiments = "http://busovilya.pythonanywhere.com/api/experiments/bees";
 
-        public static string GenerateRequest = "https://localhost:44318/api/experiments";
+        public static string GenerateRequest = "https://teacherproblem.azurewebsites.net/api/experiments";
     }
 }

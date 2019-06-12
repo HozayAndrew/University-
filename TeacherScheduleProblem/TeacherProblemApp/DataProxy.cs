@@ -15,7 +15,7 @@ namespace TeacherProblemApp
         {
             Result result = null;
 
-            using (var httpClient = new HttpClient())
+            using (var httpClient = new HttpClient() { Timeout = TimeSpan.FromMinutes(10) })
             {
                 var json = JsonConvert.SerializeObject(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -34,7 +34,7 @@ namespace TeacherProblemApp
         {
             List<ExperimentResult> result = null;
 
-            using (var httpClient = new HttpClient())
+            using (var httpClient = new HttpClient() { Timeout = TimeSpan.FromMinutes(10) })
             {
                 var json = JsonConvert.SerializeObject(data);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -53,7 +53,7 @@ namespace TeacherProblemApp
         {
             List<Data> result = null;
 
-            using (var httpClient = new HttpClient())
+            using (var httpClient = new HttpClient() { Timeout = TimeSpan.FromMinutes(10) })
             {
                 var json = JsonConvert.SerializeObject(settings);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");

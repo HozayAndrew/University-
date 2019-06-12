@@ -33,6 +33,8 @@ namespace TeacherProblemApp.Pages
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            GetDataButton.IsEnabled = false;
+
             TimeModel = new PlotModel { Title = "Algorithms Time" };
             TimeModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = int.Parse(StartValue.Text), Maximum = int.Parse(FinishValue.Text) });
 
@@ -127,6 +129,8 @@ namespace TeacherProblemApp.Pages
 
             TimePlot.Model = TimeModel;
             ValuePlot.Model = ValueModel;
+
+            GetDataButton.IsEnabled = true;
         }
 
         private async Task<List<Model.Data>> GetProblems(Model.ExperimentsSettings settings)

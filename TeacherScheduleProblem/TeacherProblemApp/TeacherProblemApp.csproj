@@ -95,6 +95,7 @@
       <DependentUpon>Result.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppModel\TimeResultFunction.cs" />
+    <Compile Include="Generator.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>

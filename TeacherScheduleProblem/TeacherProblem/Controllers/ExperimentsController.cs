@@ -9,22 +9,27 @@ using TeacherProblem.Helpers;
 
 namespace TeacherProblem.Controllers
 {
-    [EnableCors("AllowMyOrigin")]
     [Route("api/[controller]")]
     public class ExperimentsController : Controller
     {
-        [EnableCors("AllowMyOrigin")]
+        [HttpGet]
+        public ActionResult<string> Get()
+        {
+            return "Normal request";
+        }
+
         [HttpPost]
         public IActionResult Get([FromBody] ExperimentsSettings settings)
         {
             List<Data> data = new List<Data>();
             var currentValue = settings.StartCount;
 
+            var generator = new Generator();
             while (currentValue < settings.FinishCount)
             {
                 for (int i = 0; i < settings.Count; i++)
                 {
-                    var tempData = DataHelper.GetData(currentValue);
+                    var tempData = generator.GetData(currentValue);
                     data.Add(tempData);
                 }
                 currentValue += settings.Step;
@@ -33,7 +38,6 @@ namespace TeacherProblem.Controllers
             return new JsonResult(data);
         }
 
-        [EnableCors("AllowMyOrigin")]
         [HttpPost("greedy")]
         public IActionResult GreedyPost([FromBody] List<Data> data)
         {
@@ -42,7 +46,6 @@ namespace TeacherProblem.Controllers
             return new JsonResult(result);
         }
 
-        [EnableCors("AllowMyOrigin")]
         [HttpPost("antColony")]
         public IActionResult AntColonyPost([FromBody] List<Data> data)
         {

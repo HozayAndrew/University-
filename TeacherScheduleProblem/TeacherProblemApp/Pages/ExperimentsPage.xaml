@@ -28,7 +28,7 @@
                 <TextBlock Width="200" Height="40" Text="Count for step: " TextAlignment="Center" FontSize="26" Margin="20,0,0,0"/>
                 <TextBox Name="StepCount" Width="50" Height="40" Margin="10,0,0,0" FontSize="26" Text="1" TextAlignment="Center"/>
 
-                <Button Margin="70,0,0,0" Width="120" FontSize="26" Content="Get data" Click="Button_Click"/>
+                <Button Name="GetDataButton" Margin="70,0,0,0" Width="120" FontSize="26" Content="Get data" Click="Button_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

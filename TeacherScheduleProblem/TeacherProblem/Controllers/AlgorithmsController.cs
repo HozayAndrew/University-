@@ -10,7 +10,6 @@ using Newtonsoft.Json;
 
 namespace TeacherProblem.Controllers
 {
-    [EnableCors("AllowMyOrigin")]
     [Route("api/[controller]")]
     public class AlgorithmsController : Controller
     {

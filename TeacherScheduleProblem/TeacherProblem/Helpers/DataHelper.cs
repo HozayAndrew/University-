@@ -22,51 +22,5 @@ namespace TeacherProblem.Helpers
 
             return newMatrix;
         }
-
-        public static Data GetData(int capacity)
-        {
-            var data = new Data
-            {
-                Count = capacity,
-                Matrix = GenerateMatrix(capacity),
-                Time = GenerateTimeMatrix(capacity)
-            };
-            return data;
-        }
-
-        private static Random _random = new Random();
-
-        private static List<List<int>> GenerateMatrix(int capacity)
-        {
-            var matrix = new List<List<int>>();
-            for (int i = 0; i < capacity; i++)
-            {
-                matrix.Add(new List<int>());
-                for (int j = 0; j < capacity; j++)
-                {
-                    if (i != j)
-                    {
-                        matrix[i].Add(_random.Next(0, 10));
-                    }
-                    else
-                    {
-                        matrix[i].Add(1000000);
-                    }
-                }
-            }
-
-            return matrix;
-        }
-
-        private static List<int> GenerateTimeMatrix(int capacity)
-        {
-            var matrix = new List<int>();
-            for (int i = 0; i < capacity; i++)
-            {
-                matrix.Add(_random.Next(0, 10));
-            }
-
-            return matrix;
-        }
     }
 }

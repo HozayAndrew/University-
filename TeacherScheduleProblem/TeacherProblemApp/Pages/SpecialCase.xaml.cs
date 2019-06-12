@@ -41,7 +41,7 @@ namespace TeacherProblemApp.Pages
         private void TableCreate_Click(object sender, RoutedEventArgs e)
         {
             var count = int.Parse(Students.Text);
-            if (count > 10 || count < 1)
+            if (false)
             {
                 MessageBox.Show("Incorrect data: students count between 1 < count <= 10");
             }
