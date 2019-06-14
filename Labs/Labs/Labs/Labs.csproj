@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Rox.Xamarin.Video" Version="2.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1039999" />
+    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.0.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Lab1\Lab1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Lab2\Lab2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Lab3\Content.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Lab3\Lab3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Lab4\Lab4.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Lab1\Lab1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Lab2\Lab2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Lab3\Content.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Lab3\Lab3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Lab4\Lab4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

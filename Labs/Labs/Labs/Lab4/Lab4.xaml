@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:roxv="clr-namespace:Rox;assembly=Rox.Xamarin.Video.Portable"
+             x:Class="Labs.Lab4.Lab4">
+    <StackLayout>
+        <roxv:VideoView x:Name="Player"
+                        WidthRequest="400"
+                        HeightRequest="400"
+                        AutoPlay="False" LoopPlay="True" 
+                        ShowController="True" 
+                        HorizontalOptions="Center"/>
+
+        <Button x:Name="Open" WidthRequest="80" HeightRequest="60"
+                Text="Open"
+                HorizontalOptions="Center"
+                Clicked="Open_Clicked"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="Play" Text="Play" Clicked="Play_Clicked"/>
+            <Button x:Name="Stop" Text="Stop" Clicked="Stop_Clicked"/>
+            <Button x:Name="Pause" Text="Pause" Clicked="Pause_Clicked"/>
+            <Button x:Name="Mute" Text="Mute" Clicked="Mute_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
